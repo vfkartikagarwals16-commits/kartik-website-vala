@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kartik Website Vala</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111827;
+            color: white;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #7c3aed;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 8px;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: #1f2937;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #a78bfa;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 45px 20px;
+            background: linear-gradient(135deg, #312e81, #581c87);
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* GAMES */
+
+        .games {
+            padding: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .games h2 {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .game {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px black;
+            transition: 0.3s;
+        }
+
+        .game:hover {
+            transform: translateY(-8px);
+        }
+
+        .game-image {
+            height: 140px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            background: #374151;
+        }
+
+        .game h3 {
+            font-size: 22px;
+        }
+
+        .price {
+            color: #a78bfa;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        button {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #6d28d9;
+        }
+
+        /* CART */
+
+        .cart {
+            background: #030712;
+            padding: 30px;
+            text-align: center;
+        }
+
+        #cartItems {
+            margin: 15px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0f172a;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎮 Kartik Website Vala</h1>
+
+    <p>Your Gaming Store</p>
+
+</header>
+
+
+<nav>
+
+    <a href="#">Home</a>
+    <a href="#games">Games</a>
+    <a href="#cart">Cart</a>
+
+</nav>
+
+
+<section class="hero">
+
+    <h2>Welcome Gamers! 🎮</h2>
+
+    <p>Discover amazing games at Kartik Website Vala.</p>
+
+    <button onclick="goToGames()">
+        Browse Games
+    </button>
+
+</section>
+
+
+<section class="games" id="games">
+
+    <h2>🔥 Featured Games</h2>
+
+    <div class="game-container">
+
+
+        <div class="game">
+
+            <div class="game-image">
+                🏎️
+            </div>
+
+            <h3>Racing Legends</h3>
+
+            <p>High-speed racing adventure.</p>
+
+            <div class="price">₹499</div>
+
+            <br>
+
+            <button onclick="addToCart('Racing Legends', 499)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="game">
+
+            <div class="game-image">
+                ⚔️
+            </div>
+
+            <h3>Battle Warriors</h3>
+
+            <p>Enter the ultimate battle.</p>
+
+            <div class="price">₹699</div>
+
+            <br>
+
+            <button onclick="addToCart('Battle Warriors', 699)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="game">
+
+            <div class="game-image">
+                🚀
+            </div>
+
+            <h3>Space Adventure</h3>
+
+            <p>Explore the mysterious galaxy.</p>
+
+            <div class="price">₹399</div>
+
+            <br>
+
+            <button onclick="addToCart('Space Adventure', 399)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="game">
+
+            <div class="game-image">
+                🧟
+            </div>
+
+            <h3>Zombie Escape</h3>
+
+            <p>Survive the zombie world.</p>
+
+            <div class="price">₹599</div>
+
+            <br>
+
+            <button onclick="addToCart('Zombie Escape', 599)">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cart" id="cart">
+
+    <h2>🛒 Your Cart</h2>
+
+    <div id="cartItems">
+        Your cart is empty.
+    </div>
+
+    <h3>
+        Total: ₹<span id="total">0</span>
+    </h3>
+
+    <button onclick="checkout()">
+        Demo Checkout
+    </button>
+
+</section>
+
+
+<footer>
+
+    <p>© 2026 Kartik Website Vala</p>
+
+    <p>Made with HTML, CSS & JavaScript ❤️</p>
+
+</footer>
+
+
+<script>
+
+    var cart = [];
+
+    var total = 0;
+
+
+    function addToCart(name, price) {
+
+        cart.push({
+            name: name,
+            price: price
+        });
+
+        total = total + price;
+
+        updateCart();
+
+        alert(name + " added to cart!");
+    }
+
+
+    function updateCart() {
+
+        var cartItems =
+            document.getElementById("cartItems");
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML =
+                "Your cart is empty.";
+
+        } else {
+
+            cartItems.innerHTML = "";
+
+            for (var i = 0; i < cart.length; i++) {
+
+                cartItems.innerHTML +=
+                    "<p>🎮 " +
+                    cart[i].name +
+                    " - ₹" +
+                    cart[i].price +
+                    "</p>";
+            }
+        }
+
+        document.getElementById("total").innerHTML =
+            total;
+    }
+
+
+    function checkout() {
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty!");
+
+        } else {
+
+            alert(
+                "Demo checkout!\n\n" +
+                "Total: ₹" +
+                total +
+                "\n\nNo real payment has been made."
+            );
+        }
+    }
+
+
+    function goToGames() {
+
+        document.getElementById("games")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+    }
+
+</script>
+
+</body>
+</html>
